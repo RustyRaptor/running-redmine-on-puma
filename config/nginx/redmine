@@ -3,13 +3,13 @@
 # Ref: https://raw.github.com/gitlabhq/gitlabhq/5-2-stable/lib/support/nginx/gitlab
 
 upstream redmine {
-  server unix:/home/redmine/redmine/tmp/sockets/redmine.socket;
+  server unix:///opt/run/tmp/sockets/redmine.sock;
 }
 
 server {
-  listen YOUR_SERVER_IP:80 default_server;         # e.g., listen 192.168.1.1:80; In most cases *:80 is a good idea
-  server_name YOUR_SERVER_FQDN;     # e.g., server_name source.example.com;
-  root /home/redmine/redmine/public;
+  listen 192.168.129.22:80 default_server;         # e.g., listen 192.168.1.1:80; In most cases *:80 is a good idea
+  server_name proj.etvamerica.com;     # e.g., server_name source.example.com;
+  root /opt/redmine-4.2/public;
 
   # individual nginx logs for this redmine vhost
   access_log  /var/log/nginx/redmine_access.log;
